@@ -1,0 +1,22 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "慕容云海是哪里人？",
+      "options": ["天津", "广州"],
+      "correctAnswer": "天津"
+    },
+    {
+      "id": 2,
+      "question": "花样年华是哪年上映的？",
+      "options": ["1999", "2000"],
+      "correctAnswer": "2000"
+    },
+    {
+      "id": 3,
+      "question": "长城有多长？",
+      "options": ["21196公里", "8000公里"],
+      "correctAnswer": "21196公里"
+    }
+  ]
+} 

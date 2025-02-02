@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>头脑风暴游戏</title>
+    <link rel="stylesheet" href="answer_global.css" />
+    <link rel="stylesheet" href="try_style.css" />
+  </head>
+  <body>
+    <main class="iphone-pro-max">
+      <div class="game-container">
+        <h1 class="game-title">头脑<br />风暴</h1>
+        <div class="name-input-container">
+          <input type="text" id="playerName" placeholder="请输入您的姓名" class="name-input">
+        </div>
+        <nav class="game-menu">
+          <button class="game-button start-button" onclick="startGame()">
+            <span class="button-text">开始游戏</span>
+          </button>
+        </nav>
+      </div>
+    </main>
+
+    <script>
+      // 页面加载时清除所有旧数据
+      window.onload = function() {
+        localStorage.clear();
+      };
+
+      function startGame() {
+        const playerName = document.getElementById('playerName').value.trim();
+        if (!playerName) {
+          alert('请输入您的姓名！');
+          return;
+        }
+        
+        // 初始化游戏数据
+        localStorage.setItem('playerName', playerName);
+        localStorage.setItem('currentQuestionIndex', '0');
+        localStorage.setItem('score', '0');
+        localStorage.setItem('answeredQuestions', JSON.stringify([]));
+        // 清除旧的题目顺序
+        localStorage.removeItem('shuffledQuestions');
+        
+        // 跳转到答题页面
+        window.location.href = 'try.html';
+      }
+    </script>
+
+    <style>
+      .game-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        padding: 20px;
+      }
+
+      .game-title {
+        font-size: 48px;
+        text-align: center;
+        margin-bottom: 40px;
+        color: #4a90e2;
+      }
+
+      .game-button {
+        padding: 15px 30px;
+        font-size: 24px;
+        background-color: #4a90e2;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .game-button:hover {
+        background-color: #357abd;
+      }
+
+      .name-input-container {
+        margin-bottom: 30px;
+      }
+
+      .name-input {
+        padding: 10px 20px;
+        font-size: 18px;
+        border: 2px solid #4a90e2;
+        border-radius: 5px;
+        width: 250px;
+        text-align: center;
+      }
+    </style>
+  </body>
+</html>

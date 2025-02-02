@@ -1,0 +1,174 @@
+.iphone-pro-max {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .iphone-pro-max .div {
+    background-color: #ffffff;
+    width: 430px;
+    height: 932px;
+    position: relative;
+  }
+  
+  .iphone-pro-max .overlap-group {
+    position: absolute;
+    width: 315px;
+    height: 57px;
+    top: 535px;
+    left: 62px;
+  }
+  
+  .iphone-pro-max .rectangle {
+    width: 315px;
+    height: 57px;
+    top: 0;
+    position: absolute;
+    left: 0;
+    background-color: #d9d9d9;
+  }
+  
+  .iphone-pro-max .text-wrapper {
+    width: 234px;
+    height: 31px;
+    top: 12px;
+    left: 36px;
+    font-family: "Inknut Antiqua-Medium", Helvetica;
+    white-space: nowrap;
+    position: absolute;
+    font-weight: 500;
+    color: #000000;
+    font-size: 36px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .iphone-pro-max .overlap {
+    position: absolute;
+    width: 311px;
+    height: 54px;
+    top: 465px;
+    left: 66px;
+  }
+  
+  .iphone-pro-max .rectangle-2 {
+    width: 311px;
+    height: 53px;
+    top: 1px;
+    position: absolute;
+    left: 0;
+    background-color: #d9d9d9;
+  }
+  
+  .iphone-pro-max .text-wrapper-2 {
+    width: 196px;
+    height: 53px;
+    top: 0;
+    left: 51px;
+    font-family: "Inknut Antiqua-Medium", Helvetica;
+    position: absolute;
+    font-weight: 500;
+    color: #000000;
+    font-size: 36px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .iphone-pro-max .text-wrapper-3 {
+    width: 320px;
+    height: 155px;
+    top: 216px;
+    left: 57px;
+    font-family: "Heebo-Medium", Helvetica;
+    position: absolute;
+    font-weight: 500;
+    color: #000000;
+    font-size: 36px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  /* Original CSS code should be injected here */
+  
+  .iphone-pro-max {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffffff;
+  }
+  
+  .game-container {
+    width: 430px;
+    height: 932px;
+    position: relative;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .game-title {
+    font-family: "Heebo-Medium", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 36px;
+    color: #000000;
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 94px;
+  }
+  
+  .game-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .game-button {
+    width: 315px;
+    height: 57px;
+    background-color: #d9d9d9;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .game-button:hover,
+  .game-button:focus {
+    background-color: #c0c0c0;
+  }
+  
+  .button-text {
+    font-family: "Inknut Antiqua-Medium", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 36px;
+    color: #000000;
+    text-align: center;
+  }
+  
+  .online-button {
+    width: 311px;
+    height: 53px;
+  }
+  
+  @media (max-width: 430px) {
+    .game-container {
+      width: 100%;
+      height: 100vh;
+    }
+  
+    .game-button {
+      width: 90%;
+      max-width: 315px;
+    }
+  }
+  

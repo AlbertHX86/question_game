@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="answer_global.css" />
+    <link rel="stylesheet" href="answer_style.css" />
+    <link rel="stylesheet" href="try_style.css" />
+  </head>
+  <body>
+    <div class="iphone-pro-max">
+      <div class="overlap-group-wrapper">
+        <div class="overlap-group">
+          <div class="score-container">
+            <h2 class="player-name">玩家：<span id="finalPlayerName"></span></h2>
+            <div class="final-score">最终得分：<span id="finalScore"></span></div>
+            <div class="score-details">
+              答对题数：<span id="correctCount"></span><br>
+              答错题数：<span id="wrongCount"></span>
+            </div>
+            <button class="retry-button" onclick="restartGame()">重新开始</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.onload = function() {
+        displayResults();
+      };
+
+      function displayResults() {
+        // 获取存储的数据
+        const playerName = localStorage.getItem('playerName');
+        const score = parseInt(localStorage.getItem('score') || '0');
+        const answeredQuestions = JSON.parse(localStorage.getItem('answeredQuestions') || '[]');
+        
+        // 计算答对和答错的题数
+        const correctCount = Math.floor(score / 100);
+        const wrongCount = answeredQuestions.length - correctCount;
+
+        // 更新显示
+        document.getElementById('finalPlayerName').textContent = playerName || '匿名玩家';
+        document.getElementById('finalScore').textContent = score;
+        document.getElementById('correctCount').textContent = correctCount;
+        document.getElementById('wrongCount').textContent = wrongCount;
+
+        console.log('Player:', playerName);
+        console.log('Score:', score);
+        console.log('Answered:', answeredQuestions);
+      }
+
+      function restartGame() {
+        // 清除游戏数据
+        localStorage.clear();
+        window.location.href = 'index.html';
+      }
+    </script>
+  </body>
+</html> 

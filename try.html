@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="answer_global.css" />
+    <link rel="stylesheet" href="try_style.css" />
+  </head>
+  <body>
+    <div class="iphone-pro-max">
+      <div class="question-container">
+        <div class="header">
+          <div class="progress">问题 <span id="currentQuestion">1</span>/<span id="totalQuestions">30</span></div>
+          <div class="score">得分: <span id="currentScore">0</span></div>
+        </div>
+        <h2 class="question" id="questionText">加载中...</h2>
+        <div class="options-container" id="optionsContainer">
+          <!-- 选项会通过 JavaScript 动态添加 -->
+        </div>
+        <button class="end-button" onclick="endGame()">结束答题</button>
+      </div>
+    </div>
+
+    <script>
+      let questions = [
+        {
+          "id": 1,
+          "question": "长城有多长？",
+          "options": ["21196公里", "8000公里"],
+          "correctAnswer": "21196公里"
+        },
+        {
+          "id": 2,
+          "question": "故宫有多少个房间？",
+          "options": ["9999间", "8707间"],
+          "correctAnswer": "9999间"
+        },
+        {
+          "id": 3,
+          "question": "泰姬陵位于哪个国家？",
+          "options": ["印度", "巴基斯坦"],
+          "correctAnswer": "印度"
+        },
+        {
+          "id": 4,
+          "question": "世界上最深的海沟是？",
+          "options": ["马里亚纳海沟", "波多黎各海沟"],
+          "correctAnswer": "马里亚纳海沟"
+        },
+        {
+          "id": 5,
+          "question": "DNA的双螺旋结构是谁发现的？",
+          "options": ["沃森和克里克", "爱因斯坦"],
+          "correctAnswer": "沃森和克里克"
+        },
+        {
+          "id": 6,
+          "question": "世界上最高的山峰是？",
+          "options": ["珠穆朗玛峰", "乔戈里峰"],
+          "correctAnswer": "珠穆朗玛峰"
+        },
+        {
+          "id": 7,
+          "question": "《蒙娜丽莎》的作者是？",
+          "options": ["达芬奇", "梵高"],
+          "correctAnswer": "达芬奇"
+        },
+        {
+          "id": 8,
+          "question": "太阳系中最大的行星是？",
+          "options": ["木星", "土星"],
+          "correctAnswer": "木星"
+        },
+        {
+          "id": 9,
+          "question": "人体最大的器官是？",
+          "options": ["皮肤", "肝脏"],
+          "correctAnswer": "皮肤"
+        },
+        {
+          "id": 10,
+          "question": "世界上最长的河流是？",
+          "options": ["尼罗河", "亚马逊河"],
+          "correctAnswer": "尼罗河"
+        },
+        {
+          "id": 11,
+          "question": "《红楼梦》的作者是？",
+          "options": ["曹雪芹", "施耐庵"],
+          "correctAnswer": "曹雪芹"
+        },
+        {
+          "id": 12,
+          "question": "元素周期表中原子序数第一的元素是？",
+          "options": ["氢", "氦"],
+          "correctAnswer": "氢"
+        },
+        {
+          "id": 13,
+          "question": "世界上面积最大的国家是？",
+          "options": ["俄罗斯", "中国"],
+          "correctAnswer": "俄罗斯"
+        },
+        {
+          "id": 14,
+          "question": "第一次世界大战开始于哪一年？",
+          "options": ["1914年", "1939年"],
+          "correctAnswer": "1914年"
+        },
+        {
+          "id": 15,
+          "question": "光速大约是多少？",
+          "options": ["30万公里/秒", "20万公里/秒"],
+          "correctAnswer": "30万公里/秒"
+        },
+        {
+          "id": 16,
+          "question": "人体正常体温是多少摄氏度？",
+          "options": ["37度", "36度"],
+          "correctAnswer": "37度"
+        },
+        {
+          "id": 17,
+          "question": "地球距离太阳最近的季节是？",
+          "options": ["冬季", "夏季"],
+          "correctAnswer": "冬季"
+        },
+        {
+          "id": 18,
+          "question": "世界上最小的鸟是？",
+          "options": ["蜂鸟", "文鸟"],
+          "correctAnswer": "蜂鸟"
+        },
+        {
+          "id": 19,
+          "question": "人体最大的内脏器官是？",
+          "options": ["肝脏", "肺"],
+          "correctAnswer": "肝脏"
+        },
+        {
+          "id": 20,
+          "question": "世界上最大的洲是？",
+          "options": ["亚洲", "非洲"],
+          "correctAnswer": "亚洲"
+        },
+        {
+          "id": 21,
+          "question": "《战争与和平》的作者是？",
+          "options": ["托尔斯泰", "陀思妥耶夫斯基"],
+          "correctAnswer": "托尔斯泰"
+        },
+        {
+          "id": 22,
+          "question": "世界上最深的湖是？",
+          "options": ["贝加尔湖", "坦噶尼喀湖"],
+          "correctAnswer": "贝加尔湖"
+        },
+        {
+          "id": 23,
+          "question": "人体中最硬的物质是？",
+          "options": ["牙齿琺瑯质", "骨头"],
+          "correctAnswer": "牙齿琺瑯质"
+        },
+        {
+          "id": 24,
+          "question": "金字塔位于哪个国家？",
+          "options": ["埃及", "墨西哥"],
+          "correctAnswer": "埃及"
+        },
+        {
+          "id": 25,
+          "question": "世界上最大的珊瑚礁是？",
+          "options": ["大堡礁", "红海珊瑚礁"],
+          "correctAnswer": "大堡礁"
+        },
+        {
+          "id": 26,
+          "question": "世界上最大的沙漠是？",
+          "options": ["撒哈拉沙漠", "戈壁沙漠"],
+          "correctAnswer": "撒哈拉沙漠"
+        },
+        {
+          "id": 27,
+          "question": "世界上最深的海是？",
+          "options": ["太平洋", "大西洋"],
+          "correctAnswer": "太平洋"
+        },
+        {
+          "id": 28,
+          "question": "《哈姆雷特》的作者是？",
+          "options": ["莎士比亚", "雨果"],
+          "correctAnswer": "莎士比亚"
+        },
+        {
+          "id": 29,
+          "question": "世界上最大的鸟是？",
+          "options": ["鸵鸟", "企鹅"],
+          "correctAnswer": "鸵鸟"
+        },
+        {
+          "id": 30,
+          "question": "世界上最长的山脉是？",
+          "options": ["安第斯山脉", "喜马拉雅山脉"],
+          "correctAnswer": "安第斯山脉"
+        }
+      ];
+      
+      // 检查是否是新游戏开始
+      const isNewGame = !localStorage.getItem('gameStarted');
+      if (isNewGame) {
+        // 新游戏初始化
+        localStorage.setItem('gameStarted', 'true');
+        localStorage.setItem('currentQuestionIndex', '0');
+        localStorage.setItem('score', '0');
+        localStorage.setItem('answeredQuestions', JSON.stringify([]));
+        questions = shuffleArray([...questions]);
+        localStorage.setItem('shuffledQuestions', JSON.stringify(questions));
+      } else {
+        // 继续游戏，获取保存的状态
+        questions = JSON.parse(localStorage.getItem('shuffledQuestions') || JSON.stringify(questions));
+      }
+
+      // 从 localStorage 获取游戏状态
+      let currentQuestionIndex = parseInt(localStorage.getItem('currentQuestionIndex') || '0');
+      let score = parseInt(localStorage.getItem('score') || '0');
+      let answeredQuestions = JSON.parse(localStorage.getItem('answeredQuestions') || '[]');
+
+      function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      }
+
+      function showQuestion() {
+        const question = questions[currentQuestionIndex];
+        document.getElementById('questionText').textContent = question.question;
+        
+        const optionsContainer = document.getElementById('optionsContainer');
+        optionsContainer.innerHTML = '';
+        
+        // 创建选项数组并打乱顺序
+        const options = shuffleArray([...question.options]);
+        
+        options.forEach(option => {
+          const button = document.createElement('button');
+          button.className = 'option-button';
+          button.textContent = option;
+          button.onclick = () => checkAnswer(option);
+          optionsContainer.appendChild(button);
+        });
+      }
+
+      // 检查答案
+      function checkAnswer(selectedAnswer) {
+        const question = questions[currentQuestionIndex];
+        
+        if (selectedAnswer === question.correctAnswer) {
+          // 答对加100分
+          score += 100;
+          localStorage.setItem('score', score.toString());
+          localStorage.setItem('currentQuestionIndex', (currentQuestionIndex + 1).toString());
+          
+          // 检查是否完成所有题目
+          if (currentQuestionIndex + 1 >= questions.length) {
+            window.location.href = 'final-score.html';
+          } else {
+            window.location.href = 'right.html';
+          }
+        } else {
+          localStorage.setItem('currentQuestionIndex', (currentQuestionIndex + 1).toString());
+          // 检查是否完成所有题目
+          if (currentQuestionIndex + 1 >= questions.length) {
+            window.location.href = 'final-score.html';
+          } else {
+            window.location.href = 'wrong.html';
+          }
+        }
+      }
+
+      // 页面加载时执行
+      window.onload = function() {
+        // 检查是否已经答完所有题目
+        if (currentQuestionIndex >= questions.length) {
+          window.location.href = 'final-score.html';
+          return;
+        }
+        
+        showQuestion();
+        updateProgress();
+        updateScore();
+      };
+
+      function updateProgress() {
+        document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+        document.getElementById('totalQuestions').textContent = questions.length;
+      }
+
+      function updateScore() {
+        document.getElementById('currentScore').textContent = score;
+      }
+
+      // 添加结束游戏函数
+      function endGame() {
+        if (confirm('确定要结束答题吗？当前进度和得分将被保存。')) {
+          window.location.href = 'final-score.html';
+        }
+      }
+    </script>
+  </body>
+</html>
